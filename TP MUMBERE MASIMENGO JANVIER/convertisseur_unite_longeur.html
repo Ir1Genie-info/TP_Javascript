@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur Unité Longueur</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <div class="container mt-5 bg-light col-5 shadow border rounded-4 ">
+        <div class="  align-items-center ">
+
+            <div class="row text-center">
+                <h1 class="fs-2">Convertisseur d'Unité de Longueur</h1>
+            </div>
+            
+            <div class="row d-flex flex-row mb-2 border border-end-0 rounded-2 m-1">
+                <label for="valeur"class="col-2 form-label mt-2 d-flex  align-items-center">Valeur    </label>
+                <input type="number" id="valeur" class="col form-control" min="1" placeholder="Entrer la valeur">
+                
+            </div>
+            <div class="row d-flex flex-row mb-2  border border-end-0 rounded-2 m-1">
+                <label for="montant"class="col-1 form-label  d-flex  align-items-center">De</label>
+                <select name="dev1" class="col form-select" id="dev1">
+                    <option value="metre" selected>Mètre</option>
+                    <option value="kilometre">Kilomètre</option>
+                    <!-- <option value="centimetre">Centimètre</option>
+                    <option value="millimetre">Millimètre</option>
+                    <option value="kilometre">Kilomètre</option>
+                    <option value="mile">Mile</option>
+                    <option value="yard">Yard</option>
+                    <option value="pied">Pied</option>
+                    <option value="pouce">Pouce</option> -->
+                </select>
+            </div>
+            <div class="row d-flex flex-row mb-2  border border-end-0 rounded-2 m-1">
+                <label for="montant"class="col-1 form-label d-flex  align-items-center">A</label>
+                <select class="form-select col" name="dev2" id="dev2">
+                    <option value="metre" >Mètre</option>
+                    <option value="kilometre" selected>Kilomètre</option>
+                    <option value="centimetre">Centimètre</option>
+                    <option value="millimetre">Millimètre</option>
+                    <option value="mille">Mile</option>
+                    <option value="yard">Yard</option>
+                    <option value="pied">Pied</option>
+                    <option value="pouce">Pouce</option>
+                </select>
+            </div>
+            <div class="row d-flex flex-row m-1 mb-2">
+                <button class="btn btn-primary mb-3"name="btn" id="btn">Convertir</button>
+            </div>
+            <div class="row d-flex flex-row mb-2">
+                <h3 class="col-4">Resultat : </h3>
+                <h3 class="col-8 text-warning" id="resultat">0</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        let div1 = document.getElementById("dev1");
+        let dev2 = document.getElementById("dev2");
+        let btn = document.getElementById("btn");
+        let val= document.getElementById("valeur");
+        let res = 0;
+        let result = document.getElementById("resultat");
+        btn.addEventListener('click',Convertir)
+        function Convertir() {
+            if(dev1.value == "metre") {
+                if(dev2.value == "metre") {
+                    res = Number(val.value);
+                    result.innerHTML = res+" m";
+                }
+                else if(dev2.value == 'kilometre') {
+                    res = Number(val.value)/1000;
+                    result.innerHTML = res+" Km";
+                }
+                else if(dev2.value == 'centimetre') {
+                    res = Number(val.value)*100;
+                    result.innerHTML = res+" Cm";
+                }
+                else if(dev2.value == 'millimetre') {
+                    res = Number(val.value)*1000;
+                    result.innerHTML = res+" mm";
+                }
+                else if(dev2.value == 'mille') {
+                    res = Number(val.value)/1609.344;
+                    result.innerHTML = res+" mille";
+                }
+                else if(dev2.value == 'pied') {
+                    res = Number(val.value)/0.3048;
+                    result.innerHTML = res+" pieds";
+                }
+                else if(dev2.value == 'yard') {
+                    res = Number(val.value)*1.094;
+                    result.innerHTML = res+" yards";
+                }
+                else if(dev2.value == 'pouce') {
+                    res = Number(val.value)/39.4;
+                    result.innerHTML = res+" pouces";
+                }                
+            }
+            else if(dev1.value == "kilometre") {
+                if(dev2.value == "metre") {
+                    res = Number(val.value)*1000;
+                    result.innerHTML = res+" m";
+                }
+                else if(dev2.value == 'kilometre') {
+                    res = Number(val.value);
+                    result.innerHTML = res+" Km";
+                }
+                else if(dev2.value == 'centimetre') {
+                    res = Number(val.value)*100000;
+                    result.innerHTML = res+" Cm";
+                }
+                else if(dev2.value == 'millimetre') {
+                    res = Number(val.value)*1000000;
+                    result.innerHTML = res+" mm";
+                }
+                else if(dev2.value == 'mille') {
+                    res = Number(val.value)/1.609344;
+                    result.innerHTML = res+" mille";
+                }
+                else if(dev2.value == 'pied') {
+                    res = Number(val.value)/3280.84;
+                    result.innerHTML = res+" pieds";
+                }
+                else if(dev2.value == 'yard') {
+                    res = Number(val.value)*1094;
+                    result.innerHTML = res+" yards";
+                }
+                else if(dev2.value == 'pouce') {
+                    res = Number(val.value)/39370;
+                    result.innerHTML = res+" pouces";
+                }
+            }
+            
+        }
+    </script>
+</body>
+</html>

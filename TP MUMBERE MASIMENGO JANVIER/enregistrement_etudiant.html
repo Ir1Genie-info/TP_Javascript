@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enregistrement des etudiants</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <div class="container col-6 ">
+        <div class="row text-center mb-3 mt-2">
+            <h3 class="">Enregistrement des Etudiants</h3>
+        </div>
+        <div class="row " >
+            <form action="" id="myForm  " class="d-flex mr-2 justify-content-inline">
+                <input type="text" id="nom" class="form-control col " placeholder="Nom">
+                <input type="text" id="postnom" class="form-control col mr-2" placeholder="Postnom">
+                <input type="text" id="telephone" class="form-control col mr-2" placeholder="Telephone">
+            </form>
+            
+        </div>
+        <div class="row col-2 mt-2 mb-3">
+            <button type="button" onclick="addToTable()" class="btn btn-primary">Ajouter</button>
+        </div>
+        <div class="row ">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Postnom</th>
+                        <th>Téléphone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    
+                </tbody>
+            </table>
+            <div class="row col-3">
+                <button type="button" onclick="clearTable()" class="btn btn-danger">Vider le tableau</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function addToTable() {
+            let nom = document.getElementById('nom').value;
+            let postnom = document.getElementById('postnom').value;
+            let telephone = document.getElementById('telephone').value;
+            
+            let tableBody = document.getElementById('tableBody');
+            let num = 0;
+
+            let newRow = document.createElement('tr');
+            newRow.innerText = '<td>num++</td>'
+            '<td>${nom}</td>'
+            '<td>${postnom}</td>'
+            '<td>${telephone}</td>'
+            '<td><button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Supprimer</button></td>';
+
+            tableBody.appendChild(newRow);
+
+            document.getElementById('myForm').reset();
+        }
+        function deleteRow(button) {
+            let row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+        function clearTable() {
+            let tableBody = document.getElementById('tableBody');
+            tableBody.innerText = '';
+        }
+    </script>
+</body>
+</html>
