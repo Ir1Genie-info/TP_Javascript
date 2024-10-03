@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un pays</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row ">
+            <h1 class="text-center col-6 ">Ajouter un pays</h1>
+        </div>
+        <div class="row ">
+            <form action="">
+                <div class="form-row">
+                    <div class="form-group col-6 mb-3">
+                        <input type="text" class="form-control " id="pays" name="pays" placeholder="Entrer le  nom du pays">
+                    </div>
+                </div>
+                <div class="form-row ">
+                    <div class="form-group col-6 ">
+                        <input type="submit" class="btn btn-primary" value="Ajouter" name="btnAjouter" id="btnAjouter" >
+                        <input type="submit" class="btn btn-danger" value="Vider la liste" name="btnVider" id="btnVider" >
+                    </div>
+                    
+                    
+                </div>
+            </form>
+        </div>
+        <div class="row mt-4 mb-3 ">
+            <h1 class="text-center col-6">Liste des pays</h1>
+        </div>
+        <div class="row col-6">
+            <ul id="liste" class="border border-primary-subtle"></ul>
+        </div>
+        
+    </div>
+
+
+    <script>
+        
+        let liste = document.getElementById("liste");
+        let pays = document.getElementById("pays");
+        let ajouter = document.getElementById("btnAjouter");
+        let vider = document.getElementById("btnVider");
+        vider.addEventListener("click",function(){
+            liste.innerHTML="";
+
+
+        });
+        ajouter.addEventListener("click",function(e){
+            e.preventDefault();
+            if(pays.value !== ""){
+                let li = document.createElement("li");
+                li.textContent = pays.value.trim();
+                liste.appendChild(li);
+                pays.value = "";
+            }
+            else{
+                alert("Veuillez entrer le nom de votre pays");
+            }
+        });
+
+    </script>
+</body>
+</html>
